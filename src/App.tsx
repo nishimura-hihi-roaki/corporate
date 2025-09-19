@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import { useState } from 'react';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
@@ -20,35 +12,35 @@ function App() {
   return (
     <div className="bg-gray-900 text-white font-serif overflow-x-hidden">
       {/* CSS アニメーション */}
-      <style jsx>{`
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        
+        .animate-fadeInUp {
+          animation: fadeInUp 1s ease-out;
         }
-      }
-      
-      .animate-fadeInUp {
-        animation: fadeInUp 1s ease-out;
-      }
-      
-      .hero-bg {
-        animation: scaleIn 2s ease-out;
-      }
-      
-      @keyframes scaleIn {
-        from {
-          transform: scale(1.1);
+        
+        .hero-bg {
+          animation: scaleIn 2s ease-out;
         }
-        to {
-          transform: scale(1);
+        
+        @keyframes scaleIn {
+          from {
+            transform: scale(1.1);
+          }
+          to {
+            transform: scale(1);
+          }
         }
-      }
-    `}</style>
+      `}</style>
 
       {/* Header */}
       <header className="fixed top-0 w-full bg-black/80 backdrop-blur-sm z-50 transition-all duration-300">
@@ -331,4 +323,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
