@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -162,7 +169,7 @@ function App() {
                 title: '川音の間',
                 description: '川のせせらぎを聞きながら、くつろぎのひとときを',
                 image:
-                  'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                  'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
               },
               {
                 title: '山桜の間',
@@ -175,7 +182,7 @@ function App() {
                 description:
                   '夜空を見上げる特別な時間を過ごせる露天風呂付き客室',
                 image:
-                  'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                  'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
               },
             ].map((room, index) => (
               <div
@@ -217,7 +224,7 @@ function App() {
               className="h-96 bg-cover bg-center rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')",
+                  "url('https://images.unsplash.com/photo-1573470571028-a0ca7a723959?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')",
               }}
             ></div>
           </div>
@@ -232,7 +239,7 @@ function App() {
               className="h-96 bg-cover bg-center rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')",
+                  "url('https://images.unsplash.com/photo-1535530992830-e25d07cfa780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')",
               }}
             ></div>
             <div>
